@@ -1,0 +1,24 @@
+body {
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(to right, #e7cb3f, #28fbc2)
+}
+
+.container {
+  text-align: center;
+}
+
+p {
+  display: block;
+}
+
+button {
+  display: block;
+  margin: 0 auto;
+}
+
+
+
+

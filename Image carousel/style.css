@@ -1,0 +1,57 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+}
+
+.constainer {
+  width: 500px;
+  height: 300px;
+  /* border: 1px solid gray; */
+}
+
+.imageBox {
+  width: 100%;
+  height: 250px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* border: 1px solid gray; */
+  background-image: url(img/1.jpeg);
+  background-position: center;
+  background-size: cover
+}
+
+.btn {
+  padding: 5px 10px;
+  border-radius: 50%;
+  border: 1px solid black;
+}
+
+.dottsBox {
+  display: flex;
+  justify-content: center;
+}
+
+.dot {
+  margin-top: 10px;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background: rgb(214, 203, 203);
+} 
+
+.dot:not(:last-child) {
+  margin-right: 10px;
+}
+
+.active {
+  background: rgb(114, 111, 111);
+}

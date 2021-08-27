@@ -1,0 +1,39 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+
+body {
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  background: #FCFC62;
+}
+
+
+.container {
+  width: 400px;
+  height: 300px;
+  border: 1px solid gray;
+  text-align: center;
+  padding: 15px;
+}
+
+
+.result {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 20px auto;
+  /* border: 1px solid gray; */
+  font-size: 65px;
+}
+
+
+.btn {
+  padding: 5px 15px;
+  background: transparent;
+}

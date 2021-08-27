@@ -1,0 +1,84 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+
+body {
+  background: linear-gradient(to right bottom, #506D88, #26333F);
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  background: transparent;
+  text-align: center;
+}
+
+
+.quoteBox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 700px;
+  height: 300px;
+  /* border: 1px solid #ffffff; */
+  color: white;
+  font-size: 25px;
+  box-shadow: 1px 7px 31px 5px rgba(0,0,0,0.39);
+  border-radius: 5px;
+}
+
+.quote-container {
+  text-align: center;
+  width: 90%;
+}
+
+.author {
+  margin-top: 20px;
+  font-size: 18px;
+}
+
+.btn {
+  margin-top: 30px;
+  padding: 5px 2px;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid white;
+  color: white;
+  transition: .3s;
+  cursor: pointer;
+}
+
+.btn:hover {
+  border-bottom: 1px solid rgb(216, 178, 178);
+  color: rgb(216, 178, 178);
+  transform: scale(1.2);
+}
+
+.btn:active {
+  transform: translateY(5px) scale(1.15)
+}
+
+
+.btn-restart {
+  display: none;
+  margin-top: 30px;
+  padding: 5px 2px;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid white;
+  color: white;
+  transition: .3s;
+  cursor: pointer;
+}
+
+.btn-restart:hover {
+  border-bottom: 1px solid rgb(148, 211, 187);
+  color: rgb(148, 211, 187);
+  transform: scale(1.2);
+}
+
