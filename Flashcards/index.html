@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>Color</title>
+</head>
+
+<body>
+
+  <div class="header">
+    <h3>FlachCards</h3>
+    <div class="buttons">
+      <button class="btn btnAdd">Add Card</button>
+      <button class="btn btnDel">Del cards</button>
+    </div>
+  </div>
+
+  <div class="addCardsBlock">
+
+    <h3>Create FlachCard</h3>
+
+    <div class="inputBox">
+      <input type="text" class="question">
+      <label for="question">Question</label>
+    </div>
+
+    <div class="inputBox">
+      <input type="text" class="answer">
+      <label for="answer">Answer</label>
+    </div>
+
+    <div class="buttonsBox">
+      <button class="btn btnSave">Save</button>
+      <button class="btn btnClose">Close</button>
+    </div>
+
+
+  </div>
+
+
+  <div class="cards-container">
+    <!-- JS вставляет код вида: <div class="box">1</div> -->
+    <div class="box">
+      <p class="questionContent">Capital of Russia</p>
+      <p class="answerContent">Moscow</p>
+    </div>
+
+    <div class="box">
+      <p class="questionContent">Capital of USA</p>
+      <p class="answerContent">Washington</p>
+    </div>
+
+    <div class="box">
+      <p class="questionContent">Capital of Ukrain</p>
+      <p class="answerContent">Kiev</p>
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+  <script src="script.js"></script>
+
+</body>
+
+</html>
