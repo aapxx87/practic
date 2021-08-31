@@ -4,6 +4,11 @@
   box-sizing: border-box;
 }
 
+body {
+  background: #1A263A;
+  color: #fff;
+}
+
 .header {
   display: flex;
   align-items: center;

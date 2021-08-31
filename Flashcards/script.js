@@ -1,6 +1,3 @@
-const cardsContainer = document.querySelector('.cards-container')
-
-
 // Buttons
 const btnAddCard = document.querySelector('.btnAdd')
 const btnDelCard = document.querySelector('.btnDel')
@@ -10,23 +7,53 @@ const btnSaveCard = document.querySelector('.btnSave')
 const inputQuestion = document.querySelector('.question')
 const inputAnswer = document.querySelector('.answer')
 
-
 const cardBoxes = document.querySelectorAll('.box')
 
+const cardsContainer = document.querySelector('.cards-container')
 
 
+// основной массив хранения данных
+const dataArray = [{ sideA: 'Capital of Russia', sideB: 'Moscow' }, { sideA: 'Capital of USA', sideB: 'Washington' }, { sideA: 'Capital of Ukrain', sideB: 'Kiev' }]
 
 
-btnSaveCard.addEventListener('click', function () {
-
+// выгружаем содержимое массива в интерфейс
+for (const item of dataArray) {
 
   cardsContainer.insertAdjacentHTML("beforeEnd",
     `
+  <div class="box">
+   <p class="questionContent">${item.sideA}</p>
+   <p class="answerContent">${item.sideB}</p>
+  </div>
+`)
+
+}
+
+
+
+
+// событие по кнопке Save
+btnSaveCard.addEventListener('click', function () {
+
+
+  dataArray.push({ sideA: inputQuestion.value, sideB: inputAnswer.value })
+
+  console.log(dataArray);
+
+  cardsContainer.innerHTML = ''
+
+  for (const item of dataArray) {
+
+    cardsContainer.insertAdjacentHTML("beforeEnd",
+      `
     <div class="box">
-     <p class="questionContent">${inputQuestion.value}</p>
-     <p class="answerContent">${inputAnswer.value}</p>
+     <p class="questionContent">${item.sideA}</p>
+     <p class="answerContent">${item.sideB}</p>
     </div>
   `)
+
+  }
+
 
 })
 
