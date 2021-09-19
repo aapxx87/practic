@@ -1,0 +1,53 @@
+/* Модальное окно добалвения нового контента */
+
+.addNewContentBox {
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 330px;
+  height: 290px;
+  border: 1px solid #7A3A5D;
+  background: #1C1F33;
+  text-align: center;
+  border-radius: 5px;
+  display: none;
+  padding: 20px 0;
+}
+
+
+.body-content {
+  width: 80%;
+  height: 135px;
+  resize: none;
+  display: block;
+  background: transparent;
+  color: #fff;
+  margin: 10px auto;
+  padding: 10px 15px;
+  color: rgb(204, 202, 202);
+  border: 1px solid #7A3A5D;
+  border-radius: 5px;
+  font-size: 15px;
+}
+
+.body-content:focus {
+  outline: none;
+}
+
+
+
+.symbol-left {
+  width: 50px;
+  height: 20px;
+  /* border: 1px solid #fff; */
+  margin-left: 10%;
+  color: #fff;
+}
+
+
+
+/* добавляется JS при клике по кнопке открытия модалки, чтобы она стала видна */
+.visible {
+  display: block;
+}

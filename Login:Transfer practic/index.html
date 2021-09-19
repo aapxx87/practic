@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style/style.css">
+  <title>Login/transfer</title>
+</head>
+
+<body>
+
+
+
+  <div class="container-general">
+
+    <!-- в логин рег секциях кнопки переключения между Логин и Регистрация -->
+    <div class="reg-mode">
+      <a href="#" class="login-reg reg-box">Sign Up</a>
+      <a href="#" class="login-reg login-box">Login</a>
+    </div>
+
+
+    <!-- Контейнер регистрации -->
+    <div class="container-signup">
+
+      <p class="login-signUp-title">Sign Up</p>
+
+      <form class="signUp-form">
+
+        <div class="input-box input-box-signUp-username">
+          <input type="text" class="log-sing input-username">
+          <label for="input-username" class="label label-input-box-signUp-username">Username</label>
+        </div>
+
+        <div class="input-box input-box-signUp-password">
+          <input type="text" class="log-sing input-password">
+          <label for="input-password" class="label label-input-box-signUp-password">Password</label>
+        </div>
+
+        <div class="input-box input-box-signUp-password-rep">
+          <input type="text" class="log-sing input-password-repeat">
+          <label for="input-password" class="label-input-box-signUp-password-rep">Repeat password</label>
+        </div>
+
+        <button class="btn btn-signUp">Sign Up</button>
+
+        <div class="notification">Аккаунт создан</div>
+
+      </form>
+
+    </div>
+
+
+
+    <!-- Контейнер логина -->
+    <div class="container-login">
+
+      <p class="login-signUp-title">Login</p>
+
+      <form class="signUp-form">
+
+        <div class="input-box input-username-log-box">
+          <input type="text" class="input-username-log">
+          <label for="input-username-log" class="label-input-box-login-username">Username</label>
+        </div>
+
+        <div class="input-box input-password-log-box">
+          <input type="text" class="input-password-log">
+          <label for="input-password-log" class="label-input-box-login-password">Password</label>
+        </div>
+
+        <button class="btn btn-login">Login</button>
+
+        <div class="notification notification-login"></div>
+
+      </form>
+
+    </div>
+
+
+
+    <!-- Контейнер главной страницы -->
+    <div class="container-mainPage">
+
+      <!-- кнопка Sign Out -->
+      <div class="btn-exit-box">
+        <a href="#" class="btn-exit">X</a>
+      </div>
+
+
+      <p class="login-signUp-title">Main Page</p>
+
+      <p class="mainPgae-welcomeTitle"></p>
+
+      <!-- кнопка добавлени нового контента -->
+      <a href="#" class="addNewContentWindow">Add Post</a>
+
+
+      <!-- блок модального окна добавления нового контента -->
+      <div class="addNewContentBox">
+        <form action="" class="addContent-form">
+
+          <textarea name="" id="" class="body-content" maxlength="140" placeholder="Type something..."></textarea>
+
+          <div class="symbol-left">140</div>
+
+          <button class="btn btn-addContent">Add content</button>
+
+        </form>
+      </div>
+
+
+      <!-- контейнер выгрузки контента  -->
+      <div class="post-box">
+
+        <!-- <div class="content-box">
+          <p class="content-box-title">Hello world</p>
+          <p class="content-box-body">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Repellendus, natus.</p>
+          <p class="content-author">Author: Ira</p>
+        </div>  -->
+
+
+
+      </div>
+
+
+    </div>
+
+
+
+
+
+
+
+  </div>
+
+
+
+
+
+
+
+
+
+
+  <script src="script.js"></script>
+
+</body>
+
+</html>

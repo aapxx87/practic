@@ -65,11 +65,11 @@ body {
 
 
 .answerContent {
-  display: none;
+  /* opacity: 0; */
 }
 
 .box.active .answerContent {
-  display: block;
+  opacity: 1;
 }
 
 

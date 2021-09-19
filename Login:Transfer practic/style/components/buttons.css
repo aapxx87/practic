@@ -1,0 +1,44 @@
+/* общий стиль кнопок */
+.btn {
+  width: 100%;
+  padding: 13px 0;
+  background: #EF3957;
+  border-radius: 5px;
+  border: none;
+  border-radius: 50px;
+  color: #fff;
+}
+
+
+/* кнопка открытия модалки добавления нового контента */
+.addNewContentWindow {
+  color: #fff;
+  text-decoration: none;
+  background: #627ecc;
+  padding: 10px 15px;
+  display: inline-block;
+}
+
+
+/* кнопка добавления нового контента в модальном окне добавления контента */
+.btn-addContent {
+  width: 60%;
+  display: inline-block;
+  margin-top: 20px;
+}
+
+/* кнопка Sign Out */
+/* контейнер Sign Out */
+.btn-exit-box {
+  position: absolute;
+  top: 0;
+  right: 0;
+
+}
+
+/* кнопка */
+.btn-exit {
+  color: rgb(243, 87, 87);
+  font-size: 20px;
+  text-decoration: none;
+}
