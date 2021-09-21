@@ -1,0 +1,28 @@
+.comp-finList-box {
+  width: 100%;
+  /* height: 200px; */
+  margin-bottom: 25px;
+  /* border: 1px solid rgb(121, 175, 219); */
+  border-radius: 10px;
+  padding: 17px;
+  color: #bec3c7;
+  background: #2C2E52;
+}
+
+.finlist-header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.finList-title {
+  font-size: 20px;
+  margin-bottom: 20px;
+  display: inline-block;
+}
+
+.finList-total {
+  display: inline-block;
+  font-weight: 200;
+  font-size: 17px;
+}

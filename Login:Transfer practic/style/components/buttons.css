@@ -16,7 +16,10 @@
   text-decoration: none;
   background: #627ecc;
   padding: 10px 15px;
-  display: inline-block;
+  /* display: inline-block; */
+  position: absolute;
+  top: 65px;
+  right: 10px;
 }
 
 
@@ -38,7 +41,13 @@
 
 /* кнопка */
 .btn-exit {
-  color: rgb(243, 87, 87);
+  color: rgb(179, 94, 94);
   font-size: 20px;
   text-decoration: none;
+}
+
+.btn-del-content {
+  display: inline-block;
+  margin-top: 5px;
+  color: rgb(216, 158, 158);
 }

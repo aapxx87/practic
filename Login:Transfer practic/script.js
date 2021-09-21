@@ -6,12 +6,17 @@ const userData = [
     content: [
       {
         body: 'Never forget you are working with people, all of whom have ambitions, ideas, difficulties, goals, and many other fundamentally similar.',
-        date: 'Thu Sep 16 2021 13:04:39 GMT+0300 (Moscow Standard Time)',
+        date: 'Sep 16 2021 10:04:39 GMT+0300 (Moscow Standard Time)',
         name: 'katya',
       },
       {
         body: 'Davi Giroux is the lead vocalist and guitarist of a rock band that recently released two singles on Spotify.',
-        date: 'Thu Sep 13 2021 13:04:39 GMT+0300 (Moscow Standard Time)',
+        date: 'Sep 13 2021 13:04:39 GMT+0300 (Moscow Standard Time)',
+        name: 'katya',
+      },
+      {
+        body: 'New added massage.',
+        date: 'Sep 15 2021 10:46:31 GMT+0300 (Moscow Standard Time)',
         name: 'katya',
       }
     ]
@@ -23,17 +28,17 @@ const userData = [
     content: [
       {
         body: 'You can know that something is right but still struggle to do it.',
-        date: 'Thu Sep 15 2021 13:04:39 GMT+0300 (Moscow Standard Time)',
+        date: 'Sep 15 2021 11:04:39 GMT+0300 (Moscow Standard Time)',
         name: 'ira',
       },
       {
         body: 'X-Team em Português está de volta esta tarde às 19:30 (UTC-03). Será uma live interativa onde você pode fazer perguntas e participar em jogos para ganhar brindes exclusivos!.',
-        date: 'Thu Sep 14 2021 13:04:39 GMT+0300 (Moscow Standard Time)',
+        date: 'Sep 14 2021 13:04:39 GMT+0300 (Moscow Standard Time)',
         name: 'ira',
       },
       {
         body: 'Feed your focus. Starve your distractions.',
-        date: 'Thu Sep 12 2021 13:04:39 GMT+0300 (Moscow Standard Time)',
+        date: 'Sep 12 2021 13:04:39 GMT+0300 (Moscow Standard Time)',
         name: 'ira',
       }
     ]
@@ -108,12 +113,23 @@ const btnAddContentWindow = document.querySelector('.addNewContentWindow')
 const btnAddNewContent = document.querySelector('.btn-addContent')
 
 
-// - POST BOX
+// - POST BOX ALL
 const postContainer = document.querySelector('.post-box')
 
 // - Add new content textatea
 const textareaNewContent = document.querySelector('.body-content')
 const symbolLeft = document.querySelector('.symbol-left')
+
+// - POST BOX USERS
+const postUsersContainer = document.querySelector('.post-box--onlyUser')
+
+// -- вкладки переключения межуд всеми постами и постами юзера
+const btnSwitchAllPosts = document.querySelector('.switch--allPosts')
+const btnSwitchUsersPosts = document.querySelector('.switch--usersPosts')
+
+// -- ноды кнопок удаления контента
+const btnsDel = document.querySelectorAll('.content-box')
+console.log(btnsDel);
 
 
 
@@ -125,8 +141,10 @@ const updateArrayData = function (arr) {
   // когда мы добавляем новый пост, то мы обновляем интерфейс, до этого момоента при первой загрузке старницы в массиве newArray уже есть данные и получается6 что мы к уже имеющимся данным пушим дополнительные. Чтобы такого не было мы очищаем массив перед тем как обновлять его содержимое
   let newArray = []
 
+  const copyUserData = userData.slice()
+
   // пушим в пустой массив newArray содержащиеся в его объектах массивы с контентом и сразу spread их в один единый массив
-  for (const item of arr) {
+  for (const item of copyUserData) {
 
     //? item -> {username: 'katya', userpassword: '11', content: Array(2)}
 
@@ -138,17 +156,16 @@ const updateArrayData = function (arr) {
 
   //? newArray -> [{body: 'xx', date: 'xx', name: ''}, {…}, {…}, {…}, {…}]
 
+  // console.log(newArray);
+
   // фильтруем по date в объекте (элемент массива)
   newArray.sort(function (a, b) {
 
     if (a.date < b.date) {
       return 1;
-    }
-    if (a.date > b.date) {
+    } else if (a.date > b.date) {
       return -1;
     }
-
-    return 0;
 
   })
 
@@ -159,9 +176,12 @@ const updateArrayData = function (arr) {
 }
 
 
+
+
 // **** Функция выгрузки данных в интерфейс
 
 const displayData = function (arr) {
+
   for (const item of arr) {
 
     // ? item -> {body: 'Never forget you are working...', date: 'Thu Sep 14 2021 13:04:39...', name: 'ira'} - на каждой итерации получаем подобное
@@ -175,15 +195,12 @@ const displayData = function (arr) {
     postContainer.insertAdjacentHTML('beforeend', titleHtml)
 
   }
+
 }
 
 
 // передаем сформированный массив из функции updateArrayData в функцию вывода в интерфейс из него
 displayData(updateArrayData(userData))
-
-
-
-
 
 
 
@@ -209,15 +226,6 @@ labelClickMoveUp(inputUsernameSignUpPassRepeatLabel, inputRepeatPassword)
 
 labelClickMoveUp(inputUsernameLoginLabel, inputUsernameLogin)
 labelClickMoveUp(inputUsernameLoginPassLabel, inputPasswordLogin)
-
-// inputUsernameSignUpLabel.addEventListener('click', function () {
-
-//   inputUsernameSignUpLabel.classList.add('labelActive')
-//   // добавит фокус ин инпуту
-//   inputUsername.focus()
-
-// })
-
 
 
 // функция для отъезжания лейбла вверх при клике (фокусе) на инпуте
@@ -404,6 +412,14 @@ btnLogin.addEventListener('click', function (e) {
 
     currentAccount = userExist
 
+    const nameTitle = currentAccount.username.replace(currentAccount.username[0], currentAccount.username[0].toUpperCase())
+
+
+    welcomeTitle.textContent = `Welcome ${nameTitle}!`
+
+    inputUsernameLogin.value = ''
+    inputPasswordLogin.value = ''
+
   } else {
 
     boxWarningLogin.textContent = 'Неправильный логин или пароль'
@@ -419,13 +435,6 @@ btnLogin.addEventListener('click', function (e) {
 
   }
 
-  // console.log(currentAccount);
-
-  const nameTitle = currentAccount.username.replace(currentAccount.username[0], currentAccount.username[0].toUpperCase())
-
-
-  welcomeTitle.textContent = `Welcome ${nameTitle}!`
-
 
 })
 
@@ -438,12 +447,9 @@ btnSignOut.addEventListener('click', function () {
 
   mainPageContainer.style.display = 'none'
   loginContainer.style.display = 'block'
-  logRegSwitchBox.style.display = 'block'
+  logRegSwitchBox.style.display = 'flex'
 
 })
-
-
-
 
 
 
@@ -483,14 +489,29 @@ btnAddNewContent.addEventListener('click', function (e) {
   })
 
 
+  // обновляем объект текеущего аккаунта, так как обновилось его содержание
+  currentAccount = userData[idx]
+
+
+
+  // обновление контента в блоке всех постов
   postContainer.innerHTML = ''
-
-
   displayData(updateArrayData(userData))
+
+
+  // обновление контента в блоке постов юзера
+  postUsersContainer.innerHTML = ''
+  displayDataOnlyUser(currentAccount.content)
+
+
+
+
 
   newContentBox.classList.remove('visible')
 
-  inputBodyContent.textContent = ''
+  inputBodyContent.value = ''
+
+  // console.log(userData);
 
 })
 
@@ -502,6 +523,59 @@ textareaNewContent.oninput = function () {
   symbolLeft.textContent = `${140 - textareaNewContent.value.length}`
 };
 
+
+
+
+
+// ****** Блок постов Юзера (собственных)
+
+// -- Кнопки переключения между Всеми постами и Постами пользователя
+
+btnSwitchAllPosts.addEventListener('click', function () {
+  postContainer.style.display = 'block'
+  postUsersContainer.style.display = 'none'
+})
+
+btnSwitchUsersPosts.addEventListener('click', function () {
+  postContainer.style.display = 'none'
+  postUsersContainer.style.display = 'block'
+})
+
+
+// Отображение собственного контента юзера на странице
+const displayDataOnlyUser = function (arr) {
+
+  arr.forEach(function (item, idx) {
+
+
+    const titleHtml = `
+    <div class="content-box--onlyUser"> 
+    <p class="content-box-body--onlyUser">${item.body}</p> 
+    <p class="content-author--onlyUser">Created by: <span class="content-author-name">${item.name}</span></p>
+    <a href="#" class="btn-del-content ${idx}">Delete</a>
+    </div>`
+
+    postUsersContainer.insertAdjacentHTML('beforeend', titleHtml)
+
+  })
+
+
+}
+
+displayDataOnlyUser(currentAccount.content)
+
+
+// кнопка удалени контента
+btnsDel.forEach(function (btn) {
+
+  btn.addEventListener('click', function () {
+
+    console.log(btn);
+
+
+  })
+
+})
 
 
 
