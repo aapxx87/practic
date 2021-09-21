@@ -47,16 +47,26 @@ const dataMain = [
 const containerGeneral = document.querySelector('.container-general')
 const containerFinLists = document.querySelector('.container-finList')
 
-// Buttons
-
 
 // - Modal Window Add New Fin List
 const modalFinList = document.querySelector('.container-modal-add-finlist')
-
+// -- Buttons
 const btnModalFinList = document.querySelector('.btn-addModalFinList')
 const btnAddNewFinList = document.querySelector('.btn-addFinList')
-
+// -- Input
 const inputFinListName = document.querySelector('.input-add-finlist-name')
+
+
+// - Modal Window Add Movements
+const modalMovements = document.querySelector('.container-modal-add-movements')
+// -- Buttons
+const btnModalMov = document.querySelector('.btn-addFinMove')
+const btnAddNewMov = document.querySelector('.btn-addMov')
+// -- Input
+const inputMovFLname = document.querySelector('.input-add-fl-name')
+const inputMovFLdate = document.querySelector('.input-add-mov-date')
+const inputMovFLamount = document.querySelector('.input-add-mov-amount')
+
 
 
 
@@ -153,5 +163,29 @@ btnAddNewFinList.addEventListener('click', function () {
   displayFinLists(dataMain)
 
   modalFinList.classList.remove('visible')
+
+})
+
+
+// * Добавление Movements
+btnAddNewMov.addEventListener('click', function () {
+
+  let index
+
+  // находим индекс финлиста который указан в инпуте Название Финлиста куда будем вносить изменения (проверяем что он существует)
+  dataMain.forEach(function (item, idx) {
+    if (item.finlistName === inputMovFLname.value) {
+      index = idx
+    }
+  })
+
+  console.log(index);
+
+
+
+
+
+
+
 
 })
