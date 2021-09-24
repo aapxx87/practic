@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="styles/style.css">
-  <title>Color</title>
+  <title>Money Saver</title>
 </head>
 
 <body>
@@ -17,23 +17,38 @@
 
     <!-- контейнер с кнопками добавления ФинЛиста и Движений -->
     <div class="container-btns-add-finlists">
-      <a href="#" class="btn btn-addModalFinList">Add FL</a>
+      <a href="#" class="btn btn-addModalFinList">Add/Rem FL</a>
       <a href="#" class="btn btn-addFinMove">Add Mov</a>
     </div>
+
+    <!-- Суммарное значение активов -->
+    <div class="container-total-balance">
+      <!-- <p class="total-balance-title">Total Rub: 75000</p>
+      <p class="total-balance-title">Total Usd: 1500</p>
+      <p class="total-balance-title">Total Eur: 2000</p> -->
+    </div>
+
 
 
     <!-- модалка добавления финлистов -->
     <div class="container-modal-add-finlist">
-      <input type="text" class="input-add-finlist-name">
+
+      <!-- добавление ФинЛиста -->
+      <input type="text" class="input-fl-mov input-add-finlist-name">
       <a href="#" class="btn btn-addFinList">Add New FL</a>
+
+      <!-- удаление ФинЛиста -->
+      <input type="text" class=" input-fl-mov input-remove-finlist-name">
+      <a href="#" class="btn btn-removeFinList">Remove FL</a>
     </div>
 
 
     <!-- модалка добавления movements -->
     <div class="container-modal-add-movements">
-      <input type="text" class="input-add-fl-name" placeholder="FinList">
-      <input type="text" class="input-add-mov-date" placeholder="Date">
-      <input type="text" class="input-add-mov-amount" placeholder="Amount">
+      <input type="text" class="input-fl-mov input-add-fl-name" placeholder="FinList">
+      <input type="text" class="input-fl-mov input-add-mov-date" placeholder="Date">
+      <input type="text" class="input-fl-mov input-add-mov-amount" placeholder="Amount">
+      <input type="text" class="input-fl-mov input-add-mov-exrate" placeholder="Exchange rate">
       <a href="#" class="btn btn-addMov">Add</a>
     </div>
 
@@ -49,7 +64,6 @@
           <h3 class="finList-title">Investments</h3>
           <h3 class="finList-total">Total: 15000</h3>
         </div>
-
 
         <table class="finlist-table">
           <tr>
@@ -71,6 +85,39 @@
         </table>
        
       </div> -->
+
+
+      <!-- Компонент - финлист Валюта - вставляется через JS -->
+
+      <!-- <div class="comp-finList-box">
+
+        <div class="finlist-header">
+          <h3 class="finList-title">Dollars</h3>
+          <h3 class="finList-total">Total: 1500</h3>
+        </div>
+
+        <table class="finlist-table-currency">
+          <tr>
+            <td class="col table-header">Date</td>
+            <td class="col table-header">Amount</td>
+            <td class="col table-header">Ex rate</td>
+          </tr>
+          <tr>
+            <td class="col">01.03.2021</td>
+            <td class="col">400</td>
+            <td class="col">73.2</td>
+          </tr>
+          <tr>
+            <td class="col">01.02.2021</td>
+            <td class="col">650</td>
+            <td class="col">74.1</td>
+          </tr>
+        </table>
+
+      </div> -->
+
+
+      <!-- Компонент - финлист Валюта - вставляется через JS -->
 
 
     </div>

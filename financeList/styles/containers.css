@@ -11,13 +11,18 @@
   position: relative;
 }
 
+/* контейнер total balance */
+.container-total-balance {
+  margin-top: 20px;
+}
+
 /* контейнер куда выгружаются комоненты финлистов */
 .container-finList {
   width: 100%;
   height: 520px;
   overflow-y: scroll;
   /* border: 1px solid rgb(236, 247, 143); */
-  margin-top: 160px;
+  margin-top: 60px;
 }
 
 /* контейнер с кнопками добавления финлистов и движений */
@@ -30,7 +35,7 @@
 /* контейнер модалки добавления финлистов */
 .container-modal-add-finlist {
   width: 70%;
-  height: 150px;
+  height: 280px;
   background: #2C2E52;
   position: absolute;
   top: 100px;
@@ -44,7 +49,7 @@
 /* контейнер модалки добавления movements */
 .container-modal-add-movements {
   width: 70%;
-  height: 250px;
+  height: 320px;
   background: #2C2E52;
   position: absolute;
   top: 100px;
@@ -52,5 +57,5 @@
   transform: translateX(-50%);
   border: 1px solid rgb(236, 247, 143);
   text-align: center;
-  /* display: none; */
+  display: none;
 }
