@@ -19,17 +19,11 @@ const dataMain = [
       },
     ],
     calcTotal: function () {
-
       let total = 0
-
       this.movements.forEach(function (item) {
         total = total + item.movAmount
       })
-
-      // console.log(total);
-
       return total
-
     }
   },
   {
@@ -53,17 +47,11 @@ const dataMain = [
       },
     ],
     calcTotal: function () {
-
       let total = 0
-
       this.movements.forEach(function (item) {
         total = total + item.movAmount
       })
-
-      // console.log(total);
-
       return total
-
     }
   },
   {
@@ -84,17 +72,11 @@ const dataMain = [
       },
     ],
     calcTotal: function () {
-
       let total = 0
-
       this.movements.forEach(function (item) {
         total = total + item.movAmount
       })
-
-      // console.log(total);
-
       return total
-
     }
   },
   {
@@ -113,21 +95,17 @@ const dataMain = [
       }
     ],
     calcTotal: function () {
-
       let total = 0
-
       this.movements.forEach(function (item) {
         total = total + item.movAmount
       })
-
-      // console.log(total);
-
       return total
-
     }
   }
 
 ]
+
+
 
 
 
@@ -146,6 +124,7 @@ const btnAddNewFinList = document.querySelector('.btn-addFinList')
 const btnRemoveFinList = document.querySelector('.btn-removeFinList')
 // -- Input
 const inputFinListName = document.querySelector('.input-add-finlist-name')
+const inputFinListCur = document.querySelector('.input-add-finlist-cur')
 const inputFinListNameRemove = document.querySelector('.input-remove-finlist-name')
 
 
@@ -209,7 +188,7 @@ calcDisplayBalance(dataMain)
 
 
 
-// * ФУНКЦИЯ - Выгрузка в интерфейс комопонентов Финлистов из имеющейся базы
+// * ФУНКЦИЯ - Выгрузка в интерфейс компонентов Финлистов из имеющейся базы
 const displayFinLists = function (arr) {
 
   // проходимся по каждому элементу в массиве с финлистами, то есть пок аждому финлисту
@@ -222,7 +201,21 @@ const displayFinLists = function (arr) {
       let htmlMov = ''
       let movTotal = 0
 
-      item.movements.forEach(function (itemMov) {
+
+      // сортируем по дате исключительно массив movements
+      const itemSort = item.movements.sort(function (a, b) {
+        return new Date(b.date) - new Date(a.date)
+      })
+
+      // копируем основной массив
+      const itemNew = new Array(item)
+      // заменяем в новjм массиве movements на отсортированные movements
+      itemNew.movements = itemSort
+
+
+
+
+      itemNew.movements.forEach(function (itemMov) {
 
         htmlMov = htmlMov + `
       <tr>
@@ -238,7 +231,7 @@ const displayFinLists = function (arr) {
       // формируем заголовок с Title каждого финлиста
       let htmlMovTitle = `
       <div class="finlist-header">
-         <h3 class="finList-title">${item.finlistName}</h3>
+         <h3 class="finList-title">${item.finlistName} (${item.currency})</h3>
          <h3 class="finList-total">Total: ${movTotal} </h3>
       </div>
     `
@@ -274,7 +267,20 @@ const displayFinLists = function (arr) {
       let htmlMov = ''
       let movTotal = 0
 
-      item.movements.forEach(function (itemMov) {
+
+      // сортируем по дате исключительно массив movements
+      const itemSort = item.movements.sort(function (a, b) {
+        return new Date(b.date) - new Date(a.date)
+      })
+
+      // копируем основной массив
+      const itemNew = new Array(item)
+      // заменяем в новjм массиве movements на отсортированные movements
+      itemNew.movements = itemSort
+
+
+
+      itemNew.movements.forEach(function (itemMov) {
 
         htmlMov = htmlMov + `
         <tr>
@@ -291,7 +297,7 @@ const displayFinLists = function (arr) {
       // формируем заголовок с Title каждого финлиста
       let htmlMovTitle = `
         <div class="finlist-header">
-           <h3 class="finList-title">${item.finlistName}</h3>
+           <h3 class="finList-title">${item.finlistName} (${item.currency})</h3>
            <h3 class="finList-total">Total: ${movTotal} </h3>
         </div>
       `
@@ -333,8 +339,10 @@ displayFinLists(dataMain)
 
 
 
-// * ФУНКЦИЯ - Очистка инпутов после подтверждения действия
 
+
+
+// * ФУНКЦИЯ - Очистка инпутов после подтверждения действия
 
 
 
@@ -348,21 +356,46 @@ btnModalFinList.addEventListener('click', function () {
 // Добавление ФинлИста
 btnAddNewFinList.addEventListener('click', function () {
 
-  // формируем объект, который будем пушить в массив с данными
-  const newFinList = {
-    // забираем из инпута название нового ФинЛиста
-    finlistName: inputFinListName.value,
-    movements: []
+  // валидация на уникальность имени листа
+  const nameFinListValidation = dataMain.find(function (acc) {
+    return acc.finlistName === inputFinListName.value
+  })
+
+  // если nameFinListValidation = false, то есть мы не нашли подобного имени, то добавляем ФИнлист
+  if (!nameFinListValidation) {
+
+    // формируем объект, который будем пушить в массив с данными
+    const newFinList = {
+      // забираем из инпута название нового ФинЛиста
+      finlistName: inputFinListName.value,
+      movements: [],
+      currency: inputFinListCur.value,
+      calcTotal: function () {
+        let total = 0
+        this.movements.forEach(function (item) {
+          total = total + item.movAmount
+        })
+        return total
+      }
+    }
+
+    // пушим объект в массив с данными
+    dataMain.push(newFinList)
+
+    // обновляем интерфейс
+    // -- чистим HTML
+    containerFinLists.innerHTML = ''
+    // -- выгружаем обновленный массив через фукнцию displayFinLists()
+    displayFinLists(dataMain)
+
+  } else {
+    console.log('Такое имя уже занято');
   }
 
-  // пушим объект в массив с данными
-  dataMain.push(newFinList)
 
-  // обновляем интерфейс
-  // -- чистим HTML
-  containerFinLists.innerHTML = ''
-  // -- выгружаем обновленный массив через фукнцию displayFinLists()
-  displayFinLists(dataMain)
+
+
+
 
   modalFinList.classList.remove('visible')
 
@@ -410,8 +443,14 @@ btnModalMov.addEventListener('click', function () {
 // Добавление Movements
 btnAddNewMov.addEventListener('click', function () {
 
-  // если в поле инпута Exchange rate не пустая, то есть что-то вписано, то формируем объект как для валюты с доп полем курса обмена
-  if (inputMovFLexrate.value) {
+  // добавляем вадидацию на достаочность TotalBalance при выводе средств
+  // сохраняем в переменную значение Amount из инпута
+  const amount = +inputMovFLamount.value
+
+  // если mount меньше нуля
+  if (amount < 0) {
+
+    console.log('меньше нуля');
 
     let index
 
@@ -422,32 +461,62 @@ btnAddNewMov.addEventListener('click', function () {
       }
     })
 
+    // Провреяем достаточно ли баланса для вывода желаемой суммы
+    if (dataMain[index].calcTotal() - Math.abs(amount) < 0) {
+      // если недостаточно, то ничего ен происходит
+      console.log('Превышен лимит баланса');
+      console.log(amount);
 
-    // формируем типовый объект, описывающий Движение, в него вставляем значения из инпутов модалки добавления Движений
-    const objNewMov = {
-      movAmount: +inputMovFLamount.value,
-      date: inputMovFLdate.value,
-      exrate: +inputMovFLexrate.value
+    } else if (dataMain[index].calcTotal() - Math.abs(amount) >= 0) {
+      // если достаточно то создаем объект и пушим его в массив
+      console.log('Можно отнимать');
+
+      let objNewMov
+
+      const now = new Date()
+      const day = `${now.getDate()}`.padStart(2, 0)
+      const month = `${now.getMonth() + 1}`.padStart(2, '0') // так как месяц стартует с нуля, то прибалвяем единицы
+      const year = now.getFullYear()
+      const dateCur = `${day}.${month}.${year}`
+
+
+      if (inputMovFLexrate.value) {
+        // шаблон при наличии курса обмена - тогда добавляется строка курса
+
+        objNewMov = {
+          movAmount: +inputMovFLamount.value,
+          date: dateCur,
+          exrate: +inputMovFLexrate.value
+        }
+
+      } else {
+
+        // шаблрн при отсутствии курса обмена
+
+        objNewMov = {
+          movAmount: +inputMovFLamount.value,
+          date: dateCur,
+        }
+
+      }
+
+      // пушим объект нового Движения в массив со всеми данными в элемент с нужным индексом в массив с movements
+      dataMain[index].movements.push(objNewMov)
+
+      containerFinLists.innerHTML = ''
+      // -- выгружаем обновленный массив через фукнцию displayFinLists()
+      displayFinLists(dataMain)
+
+
+      // чистим инпуты
+      inputMovFLname.value = ''
+      inputMovFLamount.value = ''
+
+
     }
 
-    // пушим объект нового Движения в массив со всеми данными в элемент с нужным индексом в массив с movements
-    dataMain[index].movements.push(objNewMov)
 
-
-    // обновляем интерфейс
-    // -- чистим HTML
-    containerFinLists.innerHTML = ''
-    // -- выгружаем обновленный массив через фукнцию displayFinLists()
-    displayFinLists(dataMain)
-
-
-    // чистим инпуты
-    inputMovFLname.value = ''
-    inputMovFLamount.value = ''
-    inputMovFLdate.value = ''
-
-
-
+    // если amount > 0, то все сильно проще чем в условии выше
   } else {
 
     let index
@@ -459,19 +528,36 @@ btnAddNewMov.addEventListener('click', function () {
       }
     })
 
+    console.log('больше нуля');
 
-    // формируем типовый объект, описывающий Движение, в него вставляем значения из инпутов модалки добавления Движений
-    const objNewMov = {
-      movAmount: +inputMovFLamount.value,
-      date: inputMovFLdate.value
+    let objNewMov
+
+    const now = new Date()
+    const day = `${now.getDate()}`.padStart(2, 0)
+    const month = `${now.getMonth() + 1}`.padStart(2, '0') // так как месяц стартует с нуля, то прибалвяем единицы
+    const year = now.getFullYear()
+    const dateCur = `${day}.${month}.${year}`
+
+    if (inputMovFLexrate.value) {
+
+      objNewMov = {
+        movAmount: +inputMovFLamount.value,
+        date: dateCur,
+        exrate: +inputMovFLexrate.value
+      }
+
+    } else {
+
+      objNewMov = {
+        movAmount: +inputMovFLamount.value,
+        date: dateCur,
+      }
+
     }
 
     // пушим объект нового Движения в массив со всеми данными в элемент с нужным индексом в массив с movements
     dataMain[index].movements.push(objNewMov)
 
-
-    // обновляем интерфейс
-    // -- чистим HTML
     containerFinLists.innerHTML = ''
     // -- выгружаем обновленный массив через фукнцию displayFinLists()
     displayFinLists(dataMain)
@@ -480,9 +566,9 @@ btnAddNewMov.addEventListener('click', function () {
     // чистим инпуты
     inputMovFLname.value = ''
     inputMovFLamount.value = ''
-    inputMovFLdate.value = ''
 
   }
+
 
   console.log(dataMain);
 
