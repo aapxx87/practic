@@ -1,0 +1,16 @@
+.finlist-table {
+  /* display: none; */
+}
+
+
+.col {
+  width: 150px;
+  text-align: center;
+}
+
+.table-header {
+  color: #fff;
+  text-align: center;
+  font-size: 18px;
+  background: rgb(135, 93, 248);
+}
