@@ -132,10 +132,6 @@ const dataMain = [
 
 
 
-
-
-
-
 // * Selectors
 // Containers
 const containerGeneral = document.querySelector('.container-general')
@@ -158,6 +154,9 @@ const modalMovements = document.querySelector('.container-modal-add-movements')
 // -- Buttons
 const btnModalMov = document.querySelector('.btn-addFinMove')
 const btnAddNewMov = document.querySelector('.btn-addMov')
+
+const btnAddNewMovPlus = document.querySelector('.btn-addMov-plus')
+
 // -- Input
 const inputMovFLname = document.querySelector('.input-add-fl-name')
 const inputMovFLdate = document.querySelector('.input-add-mov-date')
@@ -195,8 +194,6 @@ const calcDisplayBalance = function (obj) {
 
   })
 
-  // console.log(sum);
-
 
   htmlTotalCur = `
     <p class="total-balance-title ${targetTotatalBalanceCurrency}">Total ${targetTotatalBalanceCurrency}: ${sum}</p>
@@ -208,8 +205,6 @@ const calcDisplayBalance = function (obj) {
 }
 
 calcDisplayBalance(dataMain)
-
-
 
 
 
@@ -243,9 +238,8 @@ const displayFinLists = function (arr) {
       // формируем заголовок с Title каждого финлиста
       let htmlMovTitle = `
       <div class="finlist-header">
-        <h3 class="finList-title">${item.finlistName}</h3>
-        <h3 class="finList-total">Total: ${movTotal} </h3>
-        <p class="finList-addNewMov">+</p>
+         <h3 class="finList-title">${item.finlistName}</h3>
+         <h3 class="finList-total">Total: ${movTotal} </h3>
       </div>
     `
 
@@ -297,9 +291,8 @@ const displayFinLists = function (arr) {
       // формируем заголовок с Title каждого финлиста
       let htmlMovTitle = `
         <div class="finlist-header">
-          <h3 class="finList-title">${item.finlistName}</h3>
-          <h3 class="finList-total">Total: ${movTotal} </h3>
-          <p class="finList-addNewMov">+</p>
+           <h3 class="finList-title">${item.finlistName}</h3>
+           <h3 class="finList-total">Total: ${movTotal} </h3>
         </div>
       `
 
@@ -337,6 +330,7 @@ const displayFinLists = function (arr) {
 }
 
 displayFinLists(dataMain)
+
 
 
 // * ФУНКЦИЯ - Очистка инпутов после подтверждения действия
@@ -490,46 +484,15 @@ btnAddNewMov.addEventListener('click', function () {
 
   }
 
-
-
-
-
   console.log(dataMain);
 
-
-
-
 })
 
 
 
 
-// * раскрытие финлиста - выезжание 
-
-// NodeList со всеми финлистами
-const finListBoxes = document.querySelectorAll('.comp-finList-box')
 
 
-finListBoxes.forEach(function (item, idx) {
-
-  item.addEventListener('click', function () {
-
-    document.querySelectorAll('.finlist-table')[idx].classList.toggle('visible')
-
-  })
-
-})
-
-
-// * добавление movements в финлист по плюсику
-const plusAddMovements = document.querySelectorAll('.finList-addNewMov')
-const modalAddMovPlus = document.querySelector('.container-modal-add-mov-plus')
-
-plusAddMovements.forEach(function (plusBtn) {
-  plusBtn.addEventListener('click', function () {
-
-  })
-})
 
 
 

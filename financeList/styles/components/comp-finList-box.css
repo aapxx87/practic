@@ -19,6 +19,7 @@
   font-size: 20px;
   margin-bottom: 20px;
   display: inline-block;
+  margin-right: 50px;
 }
 
 .finList-total {
@@ -32,4 +33,9 @@
   font-weight: 600;
   color: rgb(23, 161, 23);
   cursor: pointer;
+}
+
+.toggle-click-open {
+  width: 300px;
+  display: flex;
 }
