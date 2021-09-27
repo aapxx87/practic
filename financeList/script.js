@@ -130,9 +130,6 @@ const dataMain = [
 ]
 
 
-// dataMain[0].calcTotal()
-
-
 
 
 
@@ -248,6 +245,7 @@ const displayFinLists = function (arr) {
       <div class="finlist-header">
         <h3 class="finList-title">${item.finlistName}</h3>
         <h3 class="finList-total">Total: ${movTotal} </h3>
+        <p class="finList-addNewMov">+</p>
       </div>
     `
 
@@ -301,6 +299,7 @@ const displayFinLists = function (arr) {
         <div class="finlist-header">
           <h3 class="finList-title">${item.finlistName}</h3>
           <h3 class="finList-total">Total: ${movTotal} </h3>
+          <p class="finList-addNewMov">+</p>
         </div>
       `
 
@@ -502,6 +501,35 @@ btnAddNewMov.addEventListener('click', function () {
 
 })
 
+
+
+
+// * раскрытие финлиста - выезжание 
+
+// NodeList со всеми финлистами
+const finListBoxes = document.querySelectorAll('.comp-finList-box')
+
+
+finListBoxes.forEach(function (item, idx) {
+
+  item.addEventListener('click', function () {
+
+    document.querySelectorAll('.finlist-table')[idx].classList.toggle('visible')
+
+  })
+
+})
+
+
+// * добавление movements в финлист по плюсику
+const plusAddMovements = document.querySelectorAll('.finList-addNewMov')
+const modalAddMovPlus = document.querySelector('.container-modal-add-mov-plus')
+
+plusAddMovements.forEach(function (plusBtn) {
+  plusBtn.addEventListener('click', function () {
+
+  })
+})
 
 
 

@@ -46,7 +46,7 @@
   display: none;
 }
 
-/* контейнер модалки добавления movements */
+/* контейнер модалки добавления movements по кнопке Add Mov */
 .container-modal-add-movements {
   width: 70%;
   height: 320px;
@@ -58,4 +58,19 @@
   border: 1px solid rgb(236, 247, 143);
   text-align: center;
   display: none;
+}
+
+
+/* контейнер модалки добавления movements по кнопке Plus в самом Финлисте */
+.container-modal-add-mov-plus {
+  width: 70%;
+  height: 320px;
+  background: #2C2E52;
+  position: absolute;
+  top: 100px;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 1px solid rgb(236, 247, 143);
+  text-align: center;
+  /* display: none; */
 }

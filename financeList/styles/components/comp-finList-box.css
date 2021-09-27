@@ -26,3 +26,10 @@
   font-weight: 200;
   font-size: 17px;
 }
+
+.finList-addNewMov {
+  font-size: 20px;
+  font-weight: 600;
+  color: rgb(23, 161, 23);
+  cursor: pointer;
+}

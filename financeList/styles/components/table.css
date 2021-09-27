@@ -1,5 +1,7 @@
 .finlist-table {
+  display: none;
 }
+
 
 .col {
   width: 150px;
