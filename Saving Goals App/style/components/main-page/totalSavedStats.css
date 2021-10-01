@@ -1,0 +1,23 @@
+.box-totalsavedStats {
+  margin-bottom: 40px;
+}
+
+.totalsavedStats--title {
+  font-size: 12px;
+  color: #9FA1A5;
+  margin-bottom: 7px;
+}
+
+.totalsavedStats--number {
+  font-size: 32px;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+
+.totalsavedStats--number span {
+  font-size: 18px;
+  font-weight: 600;
+  color: blue;
+  margin-right: 3px;
+}

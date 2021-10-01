@@ -1,0 +1,61 @@
+.goalCard {
+  padding: 18px;
+  border-radius: 10px;
+  background: #fff;
+  margin-bottom: 15px;
+}
+
+.goalCard--goalProperty {
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.goalProperty--icon {
+  width: 35px;
+  height: 35px;
+  background: #E9ECF5;
+  border-radius: 10px;
+  margin-right: 15px;
+}
+
+.goalProperty--title {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.goalProperty--title span {
+  display: block;
+  font-size: 11px;
+  font-weight: 400;
+  color: #9FA1A5;
+  margin-top: 4px;
+}
+
+.goalCard--progressBar {
+  position: relative;
+}
+
+.progressBar--line {
+  width: 100%;
+  height: 4px;
+  background: #E9ECF5;
+  border-radius: 50px;
+}
+
+.progressBar--line::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 30%;
+  height: 4px;
+  background: #5476db;
+  border-radius: 50px;
+}
+
+.goalCard--progressBarPoint {
+  display: flex;
+  font-size: 11px;
+  justify-content: space-between;
+  margin-top: 5px;
+}
