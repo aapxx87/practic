@@ -80,7 +80,7 @@ const dataMain = [
     }
   },
   {
-    finlistName: 'Пенсия $',
+    finlistName: 'Пенсия',
     currency: 'usd',
     movements: [
       {
@@ -137,19 +137,26 @@ const btnAddNewMov = document.querySelector('.btn-addMov')
 const btnAddNewMovPlus = document.querySelector('.btn-addMov-plus')
 
 // -- Input
-const inputMovFLname = document.querySelector('.input-add-fl-name')
-const inputMovFLdate = document.querySelector('.input-add-mov-date')
 const inputMovFLamount = document.querySelector('.input-add-mov-amount')
 const inputMovFLexrate = document.querySelector('.input-add-mov-exrate')
 
 // - Total balances
 const containerBalances = document.querySelector('.container-total-balance')
 
+// - Modal Window Add Movements on Plus Btn
+const modalMovementsPlusBtn = document.querySelector('.container-modal-add-movements-PlusBtn')
+
+// - Overlay
+const overlay = document.querySelector('.overlay')
 
 
 
-// * Калькулирование Total Balance по определенной валюте
 
+
+
+// * Функции
+
+// ** Функция калькулирования Total Balance по определенной валюте
 const calcDisplayBalance = function (obj) {
 
 
@@ -183,16 +190,61 @@ const calcDisplayBalance = function (obj) {
 
 }
 
-calcDisplayBalance(dataMain)
+
+// ** функция раскрытия детализации финлиста
+const finListDetalisationVisible = function () {
+
+  let index = 0
+  let compFinListArr = document.querySelectorAll('.toggle-click-open')
+  let finListTable = document.querySelectorAll('.finlist-table')
+
+
+  compFinListArr.forEach(function (el, idx) {
+    el.addEventListener('click', function () {
+      index = idx
+      finListTable[index].classList.toggle('visible')
+    })
+  })
+
+}
+
+let index = 0
+
+
+// ** функция определения номера финлиста в массиве по кнопке Плюс и открытия модалки Mov Add
+const finListNumberInArr = function () {
+
+  let plusBtn = document.querySelectorAll('.finList-addNewMov')
 
 
 
+  plusBtn.forEach(function (el) {
+    el.addEventListener('click', function () {
 
-// * ФУНКЦИЯ - Выгрузка в интерфейс компонентов Финлистов из имеющейся базы
+      index = el.classList[1];
+
+      // console.log(dataMain[index]);
+      // console.log(dataMain[index].movements);
+
+      modalMovements.style.display = 'block'
+      overlay.style.display = 'block'
+
+      inputMovFLamount.focus()
+
+      return index
+    })
+  })
+
+
+
+}
+
+
+// * Функция выгрузки в интерфейс компонентов Финлистов из имеющейся базы
 const displayFinLists = function (arr) {
 
   // проходимся по каждому элементу в массиве с финлистами, то есть пок аждому финлисту
-  arr.forEach(function (item) {
+  arr.forEach(function (item, idx) {
 
     // если валюта ФинЛиста = рубль, то идем по этому сценарию
     if (item.currency === 'rub') {
@@ -231,8 +283,11 @@ const displayFinLists = function (arr) {
       // формируем заголовок с Title каждого финлиста
       let htmlMovTitle = `
       <div class="finlist-header">
-         <h3 class="finList-title">${item.finlistName} (${item.currency})</h3>
-         <h3 class="finList-total">Total: ${movTotal} </h3>
+         <div class="toggle-click-open">
+          <h3 class="finList-title">${item.finlistName} <span>(${item.currency})</span></h3>
+          <h3 class="finList-total">Total: ${movTotal} </h3>
+         </div>
+         <p class="finList-addNewMov ${idx}">+</p>
       </div>
     `
 
@@ -297,8 +352,11 @@ const displayFinLists = function (arr) {
       // формируем заголовок с Title каждого финлиста
       let htmlMovTitle = `
         <div class="finlist-header">
-           <h3 class="finList-title">${item.finlistName} (${item.currency})</h3>
-           <h3 class="finList-total">Total: ${movTotal} </h3>
+           <div class="toggle-click-open">
+            <h3 class="finList-title">${item.finlistName} <span>(${item.currency})</span></h3>
+            <h3 class="finList-total">Total: ${movTotal} </h3>
+           </div>
+           <p class="finList-addNewMov ${idx}">+</p>
         </div>
       `
 
@@ -333,23 +391,58 @@ const displayFinLists = function (arr) {
 
   })
 
+
+  finListNumberInArr()
+
+
+
+  // plusBtn = document.querySelectorAll('.finList-addNewMov')
+
+  // plusBtn.forEach(function (el) {
+  //   el.addEventListener('click', function () {
+  //     console.log(el.classList[1]);
+  //   })
+  // })
+
+  console.log();
+
 }
+
+
+
+
+
+calcDisplayBalance(dataMain)
 
 displayFinLists(dataMain)
 
+finListDetalisationVisible()
 
 
 
 
 
-// * ФУНКЦИЯ - Очистка инпутов после подтверждения действия
+
+
+
+
+
 
 
 
 // * Добавление ФинЛиста
 // Открытие модалки добалвения ФинЛиста
 btnModalFinList.addEventListener('click', function () {
-  modalFinList.classList.toggle('visible')
+  modalFinList.style.display = 'block'
+  overlay.style.display = 'block'
+})
+
+
+// Скрытие модалок при клике по overlay
+overlay.addEventListener('click', function () {
+  modalFinList.style.display = 'none'
+  modalMovements.style.display = 'none'
+  overlay.style.display = 'none'
 })
 
 
@@ -393,13 +486,20 @@ btnAddNewFinList.addEventListener('click', function () {
   }
 
 
+  finListDetalisationVisible()
 
 
+  modalFinList.style.display = 'none'
 
+  overlay.style.display = 'none'
 
-  modalFinList.classList.remove('visible')
+  // чистим инпуты
+  inputFinListName.value = ''
+  inputFinListCur.value = ''
 
 })
+
+
 
 
 // * Удаление ФинЛиста
@@ -428,15 +528,14 @@ btnRemoveFinList.addEventListener('click', function () {
   // чистим инпуты
   inputFinListNameRemove.value = ''
 
+  // раскрытие финлиста - детализация
+  finListDetalisationVisible()
 
-})
+  modalFinList.style.display = 'none'
+
+  overlay.style.display = 'none'
 
 
-
-// * Добавление Movements
-// Открытие модалки добалвения Movements
-btnModalMov.addEventListener('click', function () {
-  modalMovements.classList.toggle('visible')
 })
 
 
@@ -452,14 +551,14 @@ btnAddNewMov.addEventListener('click', function () {
 
     console.log('меньше нуля');
 
-    let index
+    // let index
 
-    // находим индекс финлиста который указан в инпуте Название Финлиста куда будем вносить изменения (проверяем что он существует)
-    dataMain.forEach(function (item, idx) {
-      if (item.finlistName === inputMovFLname.value) {
-        index = idx
-      }
-    })
+    // // находим индекс финлиста который указан в инпуте Название Финлиста куда будем вносить изменения (проверяем что он существует)
+    // dataMain.forEach(function (item, idx) {
+    //   if (item.finlistName === inputMovFLname.value) {
+    //     index = idx
+    //   }
+    // })
 
     // Провреяем достаточно ли баланса для вывода желаемой суммы
     if (dataMain[index].calcTotal() - Math.abs(amount) < 0) {
@@ -509,8 +608,8 @@ btnAddNewMov.addEventListener('click', function () {
 
 
       // чистим инпуты
-      inputMovFLname.value = ''
       inputMovFLamount.value = ''
+      inputMovFLexrate.value = ''
 
 
     }
@@ -519,14 +618,14 @@ btnAddNewMov.addEventListener('click', function () {
     // если amount > 0, то все сильно проще чем в условии выше
   } else {
 
-    let index
+    // let index
 
-    // находим индекс финлиста который указан в инпуте Название Финлиста куда будем вносить изменения (проверяем что он существует)
-    dataMain.forEach(function (item, idx) {
-      if (item.finlistName === inputMovFLname.value) {
-        index = idx
-      }
-    })
+    // // находим индекс финлиста который указан в инпуте Название Финлиста куда будем вносить изменения (проверяем что он существует)
+    // dataMain.forEach(function (item, idx) {
+    //   if (item.finlistName === inputMovFLname.value) {
+    //     index = idx
+    //   }
+    // })
 
     console.log('больше нуля');
 
@@ -564,10 +663,18 @@ btnAddNewMov.addEventListener('click', function () {
 
 
     // чистим инпуты
-    inputMovFLname.value = ''
     inputMovFLamount.value = ''
+    inputMovFLexrate.value = ''
 
   }
+
+  // раскрытие финлиста - детализация
+  finListDetalisationVisible()
+
+
+  modalMovements.style.display = 'none'
+
+  overlay.style.display = 'none'
 
 
   console.log(dataMain);

@@ -15,10 +15,9 @@
   <!-- основной контейнер -->
   <div class="container-general">
 
-    <!-- контейнер с кнопками добавления ФинЛиста и Движений -->
+    <!-- контейнер с кнопками добавления ФинЛистов-->
     <div class="container-btns-add-finlists">
-      <a href="#" class="btn btn-addModalFinList">Add/Rem FL</a>
-      <a href="#" class="btn btn-addFinMove">Add Mov</a>
+      <a href="#" class="btn btn-addModalFinList">+/-</a>
     </div>
 
     <!-- Суммарное значение активов -->
@@ -45,14 +44,12 @@
     </div>
 
 
-    <!-- модалка добавления movements по кнопке Add Mov -->
+    <!-- модалка добавления movements по кнопке Plus -->
     <div class="container-modal-add-movements">
-      <input type="text" class="input-fl-mov input-add-fl-name" placeholder="FinList">
-      <input type="text" class="input-fl-mov input-add-mov-amount" placeholder="Amount">
-      <input type="text" class="input-fl-mov input-add-mov-exrate" placeholder="Exchange rate">
+      <input type="number" class="input-fl-mov input-add-mov-amount" placeholder="Amount">
+      <input type="number" class="input-fl-mov input-add-mov-exrate" placeholder="Exchange rate">
       <a href="#" class="btn btn-addMov">Add</a>
     </div>
-
 
 
     <!-- Контейнер с ФинЛистами -->
@@ -60,11 +57,10 @@
 
       <!-- Компонент - финлист - вставляется через JS -->
 
-      <!-- <div class="comp-finList-box">
-
+      <div class="comp-finList-box">
         <div class="finlist-header">
           <div class="toggle-click-open">
-            <h3 class="finList-title">Test</h3>
+            <h3 class="finList-title">Машина <span>(rub)</span> </h3>
             <h3 class="finList-total">Total: 15000</h3>
           </div>
           <p class="finList-addNewMov">+</p>
@@ -90,7 +86,7 @@
           </tr>
         </table>
 
-      </div> -->
+      </div>
 
 
       <!-- Компонент - финлист Валюта - вставляется через JS -->
@@ -127,6 +123,9 @@
 
 
     </div>
+
+
+    <div class="overlay"></div>
 
   </div>
 

@@ -6,5 +6,15 @@
   display: inline-block;
 }
 
-/* Кнопки добавления Финлистов и Движений */
+.btn-addModalFinList {
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  background: transparent;
+  border: 1px solid rgb(221, 213, 213);
+
+}
 
