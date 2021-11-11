@@ -216,15 +216,10 @@ const finListNumberInArr = function () {
 
   let plusBtn = document.querySelectorAll('.finList-addNewMov')
 
-
-
   plusBtn.forEach(function (el) {
     el.addEventListener('click', function () {
 
       index = el.classList[1];
-
-      // console.log(dataMain[index]);
-      // console.log(dataMain[index].movements);
 
       modalMovements.style.display = 'block'
       overlay.style.display = 'block'
@@ -235,9 +230,9 @@ const finListNumberInArr = function () {
     })
   })
 
-
-
 }
+
+
 
 
 // * Функция выгрузки в интерфейс компонентов Финлистов из имеющейся базы
@@ -270,10 +265,10 @@ const displayFinLists = function (arr) {
       itemNew.movements.forEach(function (itemMov) {
 
         htmlMov = htmlMov + `
-      <tr>
-        <td class="col">${itemMov.date}</td>
-        <td class="col">${itemMov.movAmount}</td>
-      </tr>
+        <tr>
+          <td class="col">${itemMov.date}</td>
+          <td class="col">${itemMov.movAmount}</td>
+        </tr>
       `
         // суммируем все движения в единое число - Total
         movTotal = movTotal + itemMov.movAmount
@@ -395,17 +390,6 @@ const displayFinLists = function (arr) {
   finListNumberInArr()
 
 
-
-  // plusBtn = document.querySelectorAll('.finList-addNewMov')
-
-  // plusBtn.forEach(function (el) {
-  //   el.addEventListener('click', function () {
-  //     console.log(el.classList[1]);
-  //   })
-  // })
-
-  console.log();
-
 }
 
 
@@ -500,8 +484,6 @@ btnAddNewFinList.addEventListener('click', function () {
 })
 
 
-
-
 // * Удаление ФинЛиста
 btnRemoveFinList.addEventListener('click', function () {
 
@@ -539,6 +521,8 @@ btnRemoveFinList.addEventListener('click', function () {
 })
 
 
+
+
 // Добавление Movements
 btnAddNewMov.addEventListener('click', function () {
 
@@ -550,15 +534,6 @@ btnAddNewMov.addEventListener('click', function () {
   if (amount < 0) {
 
     console.log('меньше нуля');
-
-    // let index
-
-    // // находим индекс финлиста который указан в инпуте Название Финлиста куда будем вносить изменения (проверяем что он существует)
-    // dataMain.forEach(function (item, idx) {
-    //   if (item.finlistName === inputMovFLname.value) {
-    //     index = idx
-    //   }
-    // })
 
     // Провреяем достаточно ли баланса для вывода желаемой суммы
     if (dataMain[index].calcTotal() - Math.abs(amount) < 0) {
@@ -617,15 +592,6 @@ btnAddNewMov.addEventListener('click', function () {
 
     // если amount > 0, то все сильно проще чем в условии выше
   } else {
-
-    // let index
-
-    // // находим индекс финлиста который указан в инпуте Название Финлиста куда будем вносить изменения (проверяем что он существует)
-    // dataMain.forEach(function (item, idx) {
-    //   if (item.finlistName === inputMovFLname.value) {
-    //     index = idx
-    //   }
-    // })
 
     console.log('больше нуля');
 

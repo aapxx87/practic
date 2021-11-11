@@ -1,0 +1,24 @@
+@import url('containers.css');
+
+@import url('components/buttons.css');
+@import url('components/pages-signUp-Login.css');
+@import url('components/fin-list-box.css');
+@import url('components/table.css');
+@import url('components/modal-add-finlist.css');
+
+
+
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #1C1F33;
+}
+
+.visible {
+  display: block;
+}

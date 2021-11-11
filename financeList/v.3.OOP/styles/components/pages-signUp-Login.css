@@ -1,11 +1,3 @@
-.container-signup {
-  /* display: none; */
-}
-
-.container-login {
-  display: none;
-}
-
 /* Кнопки переключсения между логином и регой */
 .reg-mode {
   display: flex;
