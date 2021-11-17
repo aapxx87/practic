@@ -163,6 +163,21 @@ const getPrice = function () {
 // getPrice()
 
 
+const investmentPortfolio = [
+  {
+    stockName: 'Apple',
+    stockTicker: 'aapl',
+    buyDate: '01.01.2020',
+    buyPrice: 75,
+    volume: 4,
+    lastPrice: 150,
+    usdRubRateBuyDate: 73,
+    pAndLusd: 300,
+    pAndLrub: 300,
+  }
+]
+
+
 
 
 
