@@ -1,0 +1,39 @@
+@import url('containers.css');
+@import url('porfolio-quotes.css');
+@import url('portfolio-news.css');
+
+/* html {
+  background: linear-gradient(#4B4453, #7C7484);
+  
+} */
+
+html {
+  margin: 0px;
+  height: 100%;
+  width: 100%;
+
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0px;
+  min-height: 100%;
+  width: 100%;
+
+  background: #353840;
+  /* background-image: linear-gradient(to bottom, #4a4e5f, #444857, #3f434f, #3a3d48, #353840); */
+
+
+  color: #fff;
+}
+
+
+
+
+
+
